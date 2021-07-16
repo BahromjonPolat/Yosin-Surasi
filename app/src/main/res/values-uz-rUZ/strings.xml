@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ya seen</string>
+    <string name="meaning_twenty_seven">Роббим мени мағфират этганини ва икром қилинганлардан қилганини», деди. (Иймони ва ихлоси туфайли Аллоҳ таоло ўз фазли ва карами ила у бандани жаннатга ҳукм қилди. У банда жаннатга кириб, нозу неъматларни ва иззат-икромни кўриши билан қавмини эслади. «Кошки қавмим билсалар эди. Роббим мени мағфират этганини ва икром қилинганлардан қилганини», деди».)</string>
+    <string name="sozlamalar">Созламалар</string>
+    <string name="arabiy_matn_hajmi">Арабий матн ҳажми</string>
+    <string name="transkripsiya">Транскрпция</string>
+    <string name="manosi">Маъноси</string>
+    <string name="haqida">Ҳақида</string>
+    <string name="tajvid_qoidalari">Тажвид қоидалари</string>
+    <string name="about_surah_text">Сура ҳақида</string>
+    <string name="about_surah">Сура ҳақида</string>
+</resources>

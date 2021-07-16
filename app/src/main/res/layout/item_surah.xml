@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#70C4C4C4"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+
+    <TextView
+        android:id="@+id/item_surah_arabic_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/me_quran_volt_newmet"
+        android:padding="6dp"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/arabic_twenty_seven" />
+
+    <TextView
+        android:id="@+id/item_surah_transcription_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:paddingVertical="6dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/item_surah_meaning_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="6dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="@string/meaning_twenty_seven" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_bg"
+            android:orientation="horizontal"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="3dp">
+
+            <TextView
+                android:id="@+id/item_surah_verse_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="27" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="3dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_surah_share_img"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:background="@drawable/custom_circle_button"
+                android:padding="6dp"
+                android:src="@drawable/ic_baseline_share_24" />
+
+            <ImageView
+                android:id="@+id/item_surah_copy_img"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="12dp"
+                android:background="@drawable/custom_circle_button"
+                android:padding="6dp"
+                android:src="@drawable/ic_baseline_content_copy_24" />
+
+            <ImageView
+                android:id="@+id/item_surah_play_img"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:background="@drawable/custom_circle_button"
+                android:padding="6dp"
+                android:src="@drawable/ic_baseline_play_arrow_24" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

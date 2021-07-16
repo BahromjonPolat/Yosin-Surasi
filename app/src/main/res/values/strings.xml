@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Ya seen</string>
+    <string name="sozlamalar">Sozlamalar</string>
+    <string name="arabiy_matn_hajmi">Arabiy matn hajmi</string>
+    <string name="transkripsiya">Transkripsiya</string>
+    <string name="manosi">Ma\'nosi</string>
+    <string name="haqida">Haqida</string>
+    <string name="tajvid_qoidalari">Tajvid qoidalari</string>
+
+    <string name="about_surah_text"> Sura haqida</string>
+
+    <string name="about_surah">Sura haqida</string>
+    <string name="arabiy">Arabiy</string>
+    <string name="transkription">Transkripsiya</string>
+    <string name="meaning_tv">Ma\'nosi</string>
+</resources>
