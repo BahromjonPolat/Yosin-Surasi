@@ -21,7 +21,6 @@ import java.util.List;
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.adapter.SurahAdapter;
 import uz.itjunior.yaseen.model.Surah;
-import uz.itjunior.yaseen.ui.fragment.SettingsBottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -83,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.option_menu_tajvid:
-                SettingsBottomSheetDialog dialog = new SettingsBottomSheetDialog(this);
-                dialog.show();
-                break;
 
             case R.id.option_menu_about_surah:
                 break;

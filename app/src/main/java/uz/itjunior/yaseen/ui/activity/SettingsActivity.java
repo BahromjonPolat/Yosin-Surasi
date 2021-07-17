@@ -10,16 +10,24 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.model.LanguageManager;
 
-public class SettingsActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class SettingsActivity extends AppCompatActivity
+        implements View.OnClickListener,
+        CompoundButton.OnCheckedChangeListener,
+        SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = "SettingsActivity";
 
@@ -28,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     private CheckBox chbArabic, chbTranscription, chbMeaning;
     private SeekBar sbArabic, sbTranscription, sbMeaning;
-    private TextView tvCyrillic, tvLatin;
+    private TextView tvArabic, tvTranscription, tvMeaning, tvCyrillic, tvLatin;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @SuppressLint("CommitPrefEdits")
@@ -42,72 +50,26 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
-        setProgress();
+    }
+
+    private void findSettingView(View view) {
+        tvCyrillic = view.findViewById(R.id.settings_cyrillic_tv);
+        tvLatin = view.findViewById(R.id.settings_latin_tv);
+        chbArabic = view.findViewById(R.id.settings_arabic_chb);
+        chbTranscription = view.findViewById(R.id.settings_transcription_text_chb);
+        chbMeaning = view.findViewById(R.id.settings_meaning_text_chb);
+        sbArabic = view.findViewById(R.id.settings_arabic_sb);
+        sbTranscription = view.findViewById(R.id.settings_transcription_text_sb);
+        sbMeaning = view.findViewById(R.id.settings_meaning_sb);
+
     }
 
     private void findView() {
-        tvCyrillic = findViewById(R.id.settings_cyrillic_tv);
-        tvLatin = findViewById(R.id.settings_latin_tv);
-        chbArabic = findViewById(R.id.settings_arabic_chb);
-        chbTranscription = findViewById(R.id.settings_transcription_text_chb);
-        chbMeaning = findViewById(R.id.settings_meaning_text_chb);
-        sbArabic = findViewById(R.id.settings_arabic_sb);
-        sbTranscription = findViewById(R.id.settings_transcription_text_sb);
-        sbMeaning = findViewById(R.id.settings_meaning_sb);
-
-
-        chbMeaning.setOnCheckedChangeListener(this);
-        chbArabic.setOnCheckedChangeListener(this);
+        tvArabic = findViewById(R.id.item_surah_arabic_tv);
+        tvMeaning = findViewById(R.id.item_surah_meaning_tv);
+        tvTranscription = findViewById(R.id.item_surah_transcription_tv);
     }
 
-    private void setProgress() {
-        sbTranscription.setEnabled(chbTranscription.isChecked());
-
-        int arabicTS = preferences.getInt("arabicTextSize", 24);
-        int trTS = preferences.getInt("trTextSize", 18);
-        int meaningTS = preferences.getInt("meaningTextSize", 18);
-
-        sbArabic.setProgress(arabicTS);
-        sbMeaning.setProgress(meaningTS);
-        sbTranscription.setProgress(trTS);
-
-        sbArabic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                editor.putInt("arabicTextSize", progress);
-                editor.apply();
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        sbMeaning.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                editor.putInt("meaningTextSize", progress);
-                editor.apply();
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-    }
 
     public void setCyrillic(View view) {
         tvCyrillic.setBackgroundColor(Color.rgb(11, 135, 11));
@@ -146,5 +108,53 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 editor.apply();
                 break;
         }
+    }
+
+    public void showSettings(View v) {
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.bottom_sheet_dialog_settings_layout,
+                findViewById(R.id.settings_bottom_sheet_container));
+        findSettingView(view);
+
+        sbArabic.setOnSeekBarChangeListener(this);
+        sbMeaning.setOnSeekBarChangeListener(this);
+        sbTranscription.setOnSeekBarChangeListener(this);
+
+        dialog.setContentView(view);
+        dialog.show();
+
+    }
+
+    private void setTextSize(SeekBar seekBar,TextView t, String key) {
+        t.setTextSize(seekBar.getProgress());
+        editor.putInt(key, seekBar.getProgress());
+        editor.apply();
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        switch (seekBar.getId()) {
+            case R.id.settings_arabic_sb:
+                setTextSize(sbArabic, tvArabic, "ArabicTextSize");
+                break;
+            case R.id.settings_meaning_sb:
+                setTextSize(sbMeaning, tvMeaning, "MeaningTextSize");
+                break;
+            case R.id.settings_transcription_text_sb:
+                setTextSize(sbTranscription, tvTranscription, "TrTextSize");
+                break;
+        }
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }
