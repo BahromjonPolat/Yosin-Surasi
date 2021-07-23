@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white"
     android:paddingBottom="24dp">
 
 
@@ -26,11 +27,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="40"
+        android:min="22"
         app:layout_constraintBottom_toBottomOf="@id/settings_arabic_chb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight=".7"
         app:layout_constraintStart_toEndOf="@id/settings_arabic_chb"
-        app:layout_constraintTop_toTopOf="@id/settings_arabic_chb" />
+        app:layout_constraintTop_toTopOf="@id/settings_arabic_chb"
+        tools:ignore="UnusedAttribute" />
 
 
     <CheckBox
@@ -50,11 +53,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="40"
+        android:min="16"
         app:layout_constraintBottom_toBottomOf="@id/settings_transcription_text_chb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight=".7"
         app:layout_constraintStart_toEndOf="@id/settings_arabic_chb"
-        app:layout_constraintTop_toTopOf="@id/settings_transcription_text_chb" />
+        app:layout_constraintTop_toTopOf="@id/settings_transcription_text_chb"
+        tools:ignore="UnusedAttribute" />
 
     <CheckBox
         android:id="@+id/settings_meaning_text_chb"
@@ -62,6 +67,7 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:lines="1"
+        android:enabled="false"
         android:text="@string/meaning_tv"
         app:layout_constraintEnd_toStartOf="@id/settings_meaning_sb"
         app:layout_constraintHorizontal_weight=".3"
@@ -73,11 +79,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="40"
+        android:min="16"
         app:layout_constraintBottom_toBottomOf="@id/settings_meaning_text_chb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight=".7"
         app:layout_constraintStart_toEndOf="@id/settings_meaning_text_chb"
-        app:layout_constraintTop_toTopOf="@id/settings_meaning_text_chb" />
+        app:layout_constraintTop_toTopOf="@id/settings_meaning_text_chb"
+        tools:ignore="UnusedAttribute" />
 
 
     <LinearLayout

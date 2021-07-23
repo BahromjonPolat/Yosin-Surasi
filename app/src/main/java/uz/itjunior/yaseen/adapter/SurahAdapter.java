@@ -47,9 +47,9 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
     @Override
     public void onBindViewHolder(@NonNull SurahAdapter.SurahHolder holder, int position) {
-        holder.tvArabic.setTextSize(preferences.getInt("ArabicTextSize", 15));
-
-        Log.d(TAG, "onBindViewHolder: was worked");
+        holder.tvArabic.setTextSize(preferences.getInt("ArabicTextSize", 22));
+        holder.tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 15));
+        holder.tvTranscription.setTextSize(preferences.getInt("TrTextSize", 15));
 
         Surah surah = surahList.get(position);
         holder.tvVerse.setText(String.valueOf(position + 1));
@@ -67,9 +67,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         holder.imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent email = new Intent(android.content.Intent.ACTION_SEND);
-                email.setType("application/octet-stream");
-                context.startActivity(email);
+
             }
         });
 
@@ -114,8 +112,6 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             imgCopy = itemView.findViewById(R.id.item_surah_copy_img);
             imgPlay = itemView.findViewById(R.id.item_surah_play_img);
             imgShare = itemView.findViewById(R.id.item_surah_share_img);
-
-            Log.d(TAG, "SurahHolder: method was worked");
         }
     }
 }

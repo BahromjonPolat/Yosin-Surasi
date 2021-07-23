@@ -10,7 +10,8 @@
     <string name="about_surah_text"> Sura haqida</string>
 
     <string name="about_surah">Sura haqida</string>
-    <string name="arabiy">Arabiy</string>
-    <string name="transkription">Transkripsiya</string>
-    <string name="meaning_tv">Ma\'nosi</string>
+    <string name="arabiy" translatable="false">Arabiy</string>
+    <string name="transkription" translatable="false">Transkripsiya</string>
+    <string name="meaning_tv" translatable="false">Ma\'nosi</string>
+    <string name="yozuvni_tanlang" translatable="false">Yozuvni tanlang</string>
 </resources>
