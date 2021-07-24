@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -51,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        setTitle(getString(R.string.sozlamalar));
+        setTitle(getString(R.string.settings));
         setContentView(R.layout.activity_settings);
         findView();
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
@@ -143,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity
     }
 
     public void setCyrillic(View view) {
-        setTextSettings(tvCyrillic,tvLatin);
+        setTextSettings(tvCyrillic, tvLatin);
         manager.setDefaultLocale("uz");
     }
 

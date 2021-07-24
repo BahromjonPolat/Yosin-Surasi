@@ -16,7 +16,7 @@
             android:id="@+id/about_surah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_surah_text"/>
+            android:paddingHorizontal="16dp"/>
 
     </LinearLayout>
 

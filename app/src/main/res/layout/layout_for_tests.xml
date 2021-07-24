@@ -6,4 +6,56 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp"
+        android:fontFamily="@font/me_quran_volt_newmet"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp"
+        android:fontFamily="@font/adobe_acrobat_regular"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp"
+        android:fontFamily="@font/helvetica"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp"
+        android:fontFamily="@font/droid_naksh_regular"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="@string/arabic_twenty_seven"
+        android:textSize="24sp" />
+
+
+
+
+
 </LinearLayout>

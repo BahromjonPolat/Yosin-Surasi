@@ -16,6 +16,7 @@
         android:fontFamily="@font/me_quran_volt_newmet"
         android:padding="6dp"
         android:textSize="22sp"
+        android:letterSpacing=".3"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/arabic_twenty_seven" />
 

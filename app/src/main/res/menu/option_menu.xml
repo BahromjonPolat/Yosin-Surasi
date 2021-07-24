@@ -7,14 +7,14 @@
 
     <item
         android:id="@+id/option_menu_about_surah"
-        android:title="@string/about_surah" />
+        android:title="@string/about_surah_text" />
 
     <item
         android:id="@+id/option_menu_settings"
-        android:title="@string/sozlamalar" />
+        android:title="@string/settings" />
 
     <item
         android:id="@+id/option_menu_info"
-        android:title="@string/haqida" />
+        android:title="@string/about" />
 
 </menu>

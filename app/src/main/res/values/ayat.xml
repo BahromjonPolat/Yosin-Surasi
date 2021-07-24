@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="basmalah" translatable="false">بِسْمِ اللّهِ الرَّحْمنِ الرَّحِيمِ</string>
     <string name="arabic_twenty_seven" translatable="false">بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ الْمُكْرَمِينَ</string>
 
     <string-array name="ayat_list">
-
-        <item>يس</item>
+        <item>بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</item>
+        <item>يسٓ</item>
         <item>وَالْقُرْآنِ الْحَكِيمِ</item>
         <item>إِنَّكَ لَمِنَ الْمُرْسَلِينَ</item>
         <item>عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ</item>

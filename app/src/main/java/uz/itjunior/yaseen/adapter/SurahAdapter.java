@@ -52,7 +52,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         holder.tvTranscription.setTextSize(preferences.getInt("TrTextSize", 15));
 
         Surah surah = surahList.get(position);
-        holder.tvVerse.setText(String.valueOf(position + 1));
+        holder.tvVerse.setText(String.valueOf(position));
         holder.tvArabic.setText(surah.getArabic());
         holder.tvTranscription.setText(surah.getTranscription());
         holder.tvMeaning.setText(surah.getMeaning());
@@ -75,7 +75,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
     private void copyToClipboard(String arabic, String meaning, int verse) {
         @SuppressLint("DefaultLocale") String clip =
-                String.format("%s\n\n%s\n\n(Yosin surasi%d-oyat)", arabic, meaning, verse + 1);
+                String.format("%s\n\n%s\n\n(Yosin surasi%d-oyat)", arabic, meaning, verse);
 
         ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("text", clip);

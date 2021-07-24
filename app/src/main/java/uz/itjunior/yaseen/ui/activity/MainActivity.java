@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
+    // TODO: 7/24/21 LanguageManager'dan foydalanib tilni sozlash!
+
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.option_menu_about_surah:
+                startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));
                 break;
 
             case R.id.option_menu_info:
-                startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));
+                startActivity(new Intent(MainActivity.this, InfoActivity.class));
                 break;
 
             case R.id.option_menu_settings:

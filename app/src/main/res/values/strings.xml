@@ -1,17 +1,13 @@
 <resources>
-    <string name="app_name">Ya seen</string>
-    <string name="sozlamalar">Sozlamalar</string>
-    <string name="arabiy_matn_hajmi">Arabiy matn hajmi</string>
-    <string name="transkripsiya">Transkripsiya</string>
-    <string name="manosi">Ma\'nosi</string>
-    <string name="haqida">Haqida</string>
+    <string name="app_name">Yosin surasi</string>
+    <string name="settings">Sozlamalar</string>
+    <string name="about">Haqida</string>
     <string name="tajvid_qoidalari">Tajvid qoidalari</string>
 
     <string name="about_surah_text"> Sura haqida</string>
-
-    <string name="about_surah">Sura haqida</string>
-    <string name="arabiy" translatable="false">Arabiy</string>
-    <string name="transkription" translatable="false">Transkripsiya</string>
-    <string name="meaning_tv" translatable="false">Ma\'nosi</string>
+    <string name="arabiy">Arabiy</string>
+    <string name="transkription">Transkripsiya</string>
+    <string name="meaning_tv">Ma\'nosi</string>
     <string name="yozuvni_tanlang" translatable="false">Yozuvni tanlang</string>
+    <string name="meaning_twenty_seven">Robbim meni mag‘firat etganini va ikrom qilinganlardan qilganini», dedi. (Iymoni va ixlosi tufayli Alloh taolo o‘z fazli va karami ila u bandani jannatga hukm qildi. U banda jannatga kirib, nozu ne\\\'matlarni va izzat-ikromni ko‘rishi bilan qavmini esladi. «Koshki qavmim bilsalar edi. Robbim meni mag‘firat etganini va ikrom qilinganlardan qilganini», dedi».)</string>
 </resources>

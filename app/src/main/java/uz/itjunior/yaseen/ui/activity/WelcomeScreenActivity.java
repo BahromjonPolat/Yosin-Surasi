@@ -45,8 +45,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (lng == null) setLanguage();
-                else goToMain();
+                if (lng != null) {
+                    manager.getDefaultLanguage();
+                    goToMain();
+                }
+                else setLanguage();
             }
         }, 500);
     }
