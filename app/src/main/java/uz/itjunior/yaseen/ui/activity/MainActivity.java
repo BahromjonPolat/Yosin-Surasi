@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.zhanghai.android.fastscroll.FastScrollerBuilder;
+import me.zhanghai.android.fastscroll.PopupTextProvider;
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.adapter.SurahAdapter;
 import uz.itjunior.yaseen.model.Surah;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
     }
 
     @Override
@@ -51,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rv.setAdapter(new SurahAdapter(this, surahList()));
+
+        FastScrollerBuilder scrollerBuilder = new FastScrollerBuilder(rv);
+        scrollerBuilder.disableScrollbarAutoHide();
+        scrollerBuilder.setPopupTextProvider(new PopupTextProvider() {
+            @NonNull
+            @Override
+            public String getPopupText(int position) {
+                return String.valueOf(surahList().get(position).getAyat());
+            }
+        }).build();
     }
 
     private List<Surah> surahList() {
