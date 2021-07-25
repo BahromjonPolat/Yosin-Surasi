@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         List<Surah> surahList = new ArrayList<>();
 
         String[] ayatList = getResources().getStringArray(R.array.ayat_list);
+        String[] trCyrillic = getResources().getStringArray(R.array.transcription_cyrillic);
         String[] meanings_cyrillic = getResources().getStringArray(R.array.meaning_cyrillic);
         String[] meanings_latin = getResources().getStringArray(R.array.meaning_latin);
         String[] meaning;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         int i = 0;
         for (String s : ayatList) {
-            surahList.add(new Surah(i, s, "Transcription", meaning[i]));
+            surahList.add(new Surah(i, s, trCyrillic[i], meaning[i]));
             i++;
         }
         return surahList;
