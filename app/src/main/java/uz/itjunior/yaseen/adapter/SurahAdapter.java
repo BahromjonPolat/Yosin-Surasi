@@ -22,6 +22,7 @@ import java.util.List;
 
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.model.Surah;
+import uz.itjunior.yaseen.service.PlayerService;
 
 public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder> {
 
@@ -31,8 +32,6 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
     private final Context context;
     private final List<Surah> surahList;
-
-    private MediaPlayer player;
 
     public SurahAdapter(Context context, List<Surah> surahList) {
         this.context = context;
@@ -77,12 +76,11 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         holder.imgPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player != null) {
-                    player.release();
-                }
-
-                player= MediaPlayer.create(context, surah.getAudio());
-                player.start();
+                editor.putInt("playingAudio", surah.getAudio());
+                editor.apply();
+                Intent intent = new Intent(context, PlayerService.class);
+                intent.putExtra("resId", surah.getAudio());
+                context.startService(intent);
             }
         });
 
@@ -127,6 +125,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             imgCopy = itemView.findViewById(R.id.item_surah_copy_img);
             imgPlay = itemView.findViewById(R.id.item_surah_play_img);
             imgShare = itemView.findViewById(R.id.item_surah_share_img);
+
         }
     }
 }
