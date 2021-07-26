@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setTitle(R.string.app_name);
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rv.setAdapter(new SurahAdapter(this, surahList()));
+        rv.scrollToPosition(preferences.getInt("lastPosition", 0));
 
         FastScrollerBuilder scrollerBuilder = new FastScrollerBuilder(rv);
         scrollerBuilder.disableScrollbarAutoHide();
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public String getPopupText(int position) {
+                editor.putInt("lastPosition", position);
+                editor.apply();
                 return String.valueOf(surahList().get(position).getAyat());
             }
         }).build();
@@ -69,11 +74,15 @@ public class MainActivity extends AppCompatActivity {
     private List<Surah> surahList() {
         List<Surah> surahList = new ArrayList<>();
 
+        // Raw papkasining ichidagi barcha elementlarni olish uchun ishlatiladi.
+        Field[] fields = R.raw.class.getDeclaredFields();
+
         String[] ayatList = getResources().getStringArray(R.array.ayat_list);
         String[] trCyrillic = getResources().getStringArray(R.array.transcription_cyrillic);
         String[] meanings_cyrillic = getResources().getStringArray(R.array.meaning_cyrillic);
         String[] meanings_latin = getResources().getStringArray(R.array.meaning_latin);
         String[] meaning;
+
 
         String lng = preferences.getString("language", "uz");
 
@@ -82,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         int i = 0;
         for (String s : ayatList) {
-            surahList.add(new Surah(i, s, trCyrillic[i], meaning[i]));
+            int resId = getResources().getIdentifier(fields[i].getName(), "raw", getPackageName());
+            surahList.add(new Surah(i, s, trCyrillic[i], meaning[i], resId));
             i++;
         }
         return surahList;

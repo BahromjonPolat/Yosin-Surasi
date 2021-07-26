@@ -5,12 +5,18 @@ public class Surah {
     private String arabic;
     private String transcription;
     private String meaning;
+    private int audio;
 
-    public Surah(int ayat, String arabic, String transcription, String meaning) {
+    public Surah(int ayat, String arabic, String transcription, String meaning, int audio) {
         this.ayat = ayat;
         this.arabic = arabic;
         this.transcription = transcription;
         this.meaning = meaning;
+        this.audio = audio;
+    }
+
+    public int getAudio() {
+        return audio;
     }
 
     public int getAyat() {

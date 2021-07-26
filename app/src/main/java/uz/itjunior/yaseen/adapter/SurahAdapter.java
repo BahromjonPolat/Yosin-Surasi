@@ -6,6 +6,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,8 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
     private final Context context;
     private final List<Surah> surahList;
+
+    private MediaPlayer player;
 
     public SurahAdapter(Context context, List<Surah> surahList) {
         this.context = context;
@@ -68,6 +71,18 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        holder.imgPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (player != null) {
+                    player.release();
+                }
+
+                player= MediaPlayer.create(context, surah.getAudio());
+                player.start();
             }
         });
 

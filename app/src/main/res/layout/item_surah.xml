@@ -29,7 +29,7 @@
         android:paddingVertical="6dp"
         android:textSize="18sp"
         android:visibility="visible"
-        tools:text="@string/app_name" />
+        tools:text="@string/tr_27" />
 
     <TextView
         android:id="@+id/item_surah_meaning_tv"

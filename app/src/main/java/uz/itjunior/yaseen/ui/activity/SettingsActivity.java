@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -53,10 +54,13 @@ public class SettingsActivity extends AppCompatActivity
         setTitle(getString(R.string.settings));
         setContentView(R.layout.activity_settings);
         findView();
+
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
         manager = new LanguageManager(this);
         setSettings();
+
+        Log.d(TAG, "onCreate: " + R.font.droid_naksh_regular);
     }
 
 
@@ -81,8 +85,8 @@ public class SettingsActivity extends AppCompatActivity
     private void setSettings() {
         fb.setColorFilter(Color.WHITE);
         tvArabic.setTextSize(preferences.getInt("ArabicTextSize", 22));
-        tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 15));
-        tvTranscription.setTextSize(preferences.getInt("TrTextSixe", 15));
+        tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 18));
+        tvTranscription.setTextSize(preferences.getInt("TrTextSize", 18));
 
     }
 
