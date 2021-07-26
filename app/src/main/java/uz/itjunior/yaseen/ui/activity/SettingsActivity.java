@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
 
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.model.LanguageManager;
@@ -34,6 +35,7 @@ public class SettingsActivity extends AppCompatActivity
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private LanguageManager manager;
+
 
     // Views in activity
     private TextView tvArabic, tvTranscription, tvMeaning;

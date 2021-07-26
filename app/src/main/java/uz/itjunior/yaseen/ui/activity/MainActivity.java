@@ -16,8 +16,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import me.zhanghai.android.fastscroll.FastScrollerBuilder;
@@ -32,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
+    private DatabaseReference reference;
+
     // TODO: 7/24/21 LanguageManager'dan foydalanib tilni sozlash!
 
     @SuppressLint("CommitPrefEdits")
@@ -44,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
 
     }
 
@@ -66,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public String getPopupText(int position) {
                 editor.putInt("lastPosition", position);
                 editor.apply();
+
                 return String.valueOf(surahList().get(position).getAyat());
             }
         }).build();

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "187504714577",
+    "project_id": "muslim-apps-uz",
+    "storage_bucket": "muslim-apps-uz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187504714577:android:4e3a3cd1287abb54232970",
+        "android_client_info": {
+          "package_name": "uz.itjunior.yaseen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187504714577-5bjjogq0nddr44a7qcpp0fu5qngihmkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkhwSuJfiE3wUM5AXB1SOnlBfsBnDQiV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187504714577-5bjjogq0nddr44a7qcpp0fu5qngihmkb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

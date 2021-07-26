@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Locale;
 
 import uz.itjunior.yaseen.R;
@@ -30,6 +32,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     private TextView tvLatin, tvCyrillic;
 
+    private FirebaseAnalytics analytics;
+
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome_screen);
+
+        analytics = FirebaseAnalytics.getInstance(this);
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
