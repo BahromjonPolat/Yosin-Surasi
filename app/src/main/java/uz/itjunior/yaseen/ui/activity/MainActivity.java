@@ -11,10 +11,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.firebase.database.DatabaseReference;
 
@@ -45,13 +48,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        setTitle(R.string.app_name);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        hideStatusBar();
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
     }
+
 
     @Override
     protected void onStart() {
@@ -97,8 +102,7 @@ public class MainActivity extends AppCompatActivity {
         if (lng.equals("uz")) {
             meaning = meanings_cyrillic;
             transcription = trCyrillic;
-        }
-        else {
+        } else {
             meaning = meanings_latin;
             transcription = trLatin;
         }
@@ -112,35 +116,44 @@ public class MainActivity extends AppCompatActivity {
         return surahList;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        return true;
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.option_menu_tajvid:
-                startActivity(new Intent(MainActivity.this, TajweedActivity.class));
-                break;
-
-            case R.id.option_menu_about_surah:
-                startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));
-                break;
-
-            case R.id.option_menu_info:
-                startActivity(new Intent(MainActivity.this, InfoActivity.class));
-                break;
-
-            case R.id.option_menu_settings:
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                break;
+    private void hideStatusBar() {
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            this.getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.option_menu, menu);
+//        return true;
+//    }
+//
+//    @SuppressLint("NonConstantResourceId")
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//
+//            case R.id.option_menu_tajvid:
+//                startActivity(new Intent(MainActivity.this, TajweedActivity.class));
+//                break;
+//
+//            case R.id.option_menu_about_surah:
+//                startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));
+//                break;
+//
+//            case R.id.option_menu_info:
+//                startActivity(new Intent(MainActivity.this, InfoActivity.class));
+//                break;
+//
+//            case R.id.option_menu_settings:
+//                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+//                break;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }
