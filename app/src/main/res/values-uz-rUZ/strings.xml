@@ -9,4 +9,6 @@
     <string name="arabiy" translatable="false">Арабий</string>
     <string name="transkription" translatable="false">Транскрпция</string>
     <string name="meaning_tv" translatable="false">Маъноси</string>
+    <string name="tr_27">Ва ма анзална ъала қовмиҳи мим-баъдиҳи мин жундим-мина-с-самаъи ва ма кунна мунзилин.</string>
+    <string name="ayat">оят</string>
 </resources>

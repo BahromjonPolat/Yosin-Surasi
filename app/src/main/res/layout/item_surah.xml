@@ -17,8 +17,9 @@
         android:padding="6dp"
         android:textSize="22sp"
         android:letterSpacing=".3"
+        android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/arabic_twenty_seven" />
+        tools:text="@string/arabic_twenty_seven" />
 
     <TextView
         android:id="@+id/item_surah_transcription_tv"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="6dp"
         android:textSize="18sp"
-        android:text="@string/meaning_twenty_seven" />
+        tools:text="@string/meaning_twenty_seven" />
 
     <LinearLayout
         android:layout_width="match_parent"

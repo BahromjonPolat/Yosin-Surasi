@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="tr_27" translatable="false">Ва ма анзална ъала қовмиҳи мим-баъдиҳи мин жундим-мина-с-самаъи ва ма кунна мунзилин.</string>
-
     <string-array name="transcription_cyrillic">
         <item>Меҳрибон ва раҳмли Аллоҳнинг номи билан бошлайман.</item>
-        <item>Я син</item>
+        <item>Я син.</item>
         <item>Вал-Қуръанил-ҳаким.</item>
         <item>Иннака ламина-л-мурсалин.</item>
         <item>Ъала сироти-м-мустақим.</item>
@@ -88,6 +86,93 @@
         <item>А ва лайса-л-Лазӣ холақо-с-самавати ва-л-арза би қодирин ъала ай-яхлуқо мислаҳум, бала ва ҳува-л-холлақул-ъалим.</item>
         <item>Иннамо амруҳу иза арода шайъан ай-яқула лаҳу кун фаякун.</item>
         <item>Фа Субҳонал-Лази би ядиҳи малакуту кулли шайъив-ва илайҳи туржаъун.</item>
+    </string-array>
+
+    <string-array name="transcription_latin">
+        <item>Mehribon va rahmli Allohning nomi bilan boshlayman.</item>
+        <item>Ya sin.</item>
+        <item>Val-Qur\'anil-hakim.</item>
+        <item>Innaka lamina-l-mursalin.</item>
+        <item>\'ala siroti-m-mustaqim.</item>
+        <item>Tanzila-l-\'Azizi-r-Rohim.</item>
+        <item>Litunziro qovmam-ma unziro aba\'uhum fa hum g`ofilun.</item>
+        <item>Laqod haqqo-l-qovlu \'ala aksarihim fa hum la yu\'minun.</item>
+        <item>Inna ja\'alna fӣ a\'noqihim ag`lalan fa hiya ila-l-azqoni fa hum muqmahun.</item>
+        <item>Va ja\'alna mim-bayni aydihim saddav-va min хolfihim saddan fa ag`shaynahum fa hum la yubsirun.</item>
+        <item>Va sava\'un \'alayhim a anzartahum am lam tunzirhum, la yu\'minun.</item>
+        <item>Innama tunziru mani-t-taba\'a-z-zikro va хoshiya-r-Rohmana bi-l-g`oyb, fa bashshirhu bi mag`firotiv-va ajrin karim.</item>
+        <item>Inna Nahnu nuhyi-l-mavta va naktubu ma qoddamu va asarohum va kulla shay\'in ahsaynahu fӣ imami-m-mubin.</item>
+        <item>Va-zrib lahum masalan ashaba-l-qoryati iz ja\'aha-l-mursalun.</item>
+        <item>Iz arsalna ilayhimu-snayni fa kazzabuhuma fa \'azzazna bi salisin fa qolu inna ilaykum mursalun.</item>
+        <item>Qolu ma antum illa basharum-misluna va ma anzala-r-Rohmanu min shay\'in in antum illa takzibun.</item>
+        <item>Qolu Robbuna ya\'lamu inna ilaykum lamursalun.</item>
+        <item>Va ma \'alayna illa-l-balag`u-l-mubin.</item>
+        <item>Qolu inna tatayyarna bikum, lail-lam tantahu lanarjumannakum va layamassannakum minna \'azabun \'alim.</item>
+        <item>Qolu toirukum-ma\'akum, a \'in zukkirtum, bal antum qovmum-musrifun.</item>
+        <item>Va ja\'a min aqsa-l-madinati rojuluy-yas\'a, qola yo qovmi-t-tabi\'u-l-mursalin.</item>
+        <item>Ittabi\'u mal-la yas\'alukum ajrov-va hum-muhtadun.</item>
+        <item>Va ma liya la a\'budu-l-Lazӣ fataronӣ va ilayhi turja\'un.</item>
+        <item>A attaхizu min dunihi alihatan iy-yuridni-r-Rohmanu bi zurril-la tug`nӣ \'annӣ shafa\'atuhum shay\'av-va la yunqizun.</item>
+        <item>Innӣ izal-lafӣ zalalim-mubin.</item>
+        <item>Innӣ amantu bi Robbikum fa-sma\'un.</item>
+        <item>Qila-dхuli-l-jannata qola yo layta qovmi ya\'lamun.</item>
+        <item>Bi ma g`ofaroli Robbӣ va ja\'alani mina-l-mukromin.</item>
+        <item>Va ma anzalna \'ala qovmihi mim-ba\'dihi min jundim-mina-s-sama\'i va ma kunna munzilin.</item>
+        <item>In kanat illa sayhatav-vahidatan fa iza hum хomidun.</item>
+        <item>Yo hasrotan \'ala-l-\'ibad, ma ya\'tihim-mi-r-rosulin illa kanu bihi yastahzi\'un.</item>
+        <item>Alam yarov kam ahlakna qoblahum-mina-l-quruni annahum ilayhim la yarji\'un.</item>
+        <item>Va in kullu-l-lamma jami\'u-l-ladayna muhzarun.</item>
+        <item>Va ayatul-lahumu-l-arzu-l-maytatu, ahyaynaha va aхrojna minha habban fa minhu ya\'kulun.</item>
+        <item>Va ja\'alna fiha jannatim-min-naхiliv-va a\'nabiv-va fajjarna fiha mina-l-\'uyun.</item>
+        <item>Liya\'kulu min samarihi va ma \'amilathu aydihim a fa la yashkurun.</item>
+        <item>Subhana-l-Lazy хolaqo-l-azvaja kullaha mim-ma tunbitu-l-arzu va min anfusihim va mim-ma la ya\'lamun.</item>
+        <item>Va ayatul-lahumu-l-laylu, naslaхu minhu-n-nahoro fa iza hum-muzlimun.</item>
+        <item>Va-sh-shamsu tajri limustaqorril-laha, zalika taqdiru-l-\'Azizi-l-\'Alim.</item>
+        <item>Va-l-qomaro qoddarnahu manazila hatta \'ada ka-l-\'urjuni-l-qodim.</item>
+        <item>La-sh-shamsu yambag`i laha an tudrika-l-qomaro va la-l-laylu sabiqu-n-nahar, va kullun fӣ falakiy-yasbahun.</item>
+        <item>Va oyatul-lahum anna hamalna zurriyyatahum fӣ-l-fulki-l-mashhun.</item>
+        <item>Va хolaqna lahum-mim-mislihi ma yarkabun.</item>
+        <item>Va in-nasha\' nug`riquhum fa la sariхo lahum va la hum yunqozun.</item>
+        <item>Illa rohmatam-minna va mata\'an ila hin.</item>
+        <item>Va iza qila lahumu-t-taqu ma bayna aydikum va ma хolfakum la\'allakum turhamun.</item>
+        <item>Va ma ta\'tiyhim-min ayatim-min ayati Robbihim illa kanu \'anha mu\'rizin.</item>
+        <item>Va iza qila lahum anfiqu mim-ma rozaqokumullohu qola-l-lazina kafaru li-l-lazina amanu anut\'imu mal-lav yasha\'ullohu at\'amahu in antum illa fӣ zalolim-mubin.</item>
+        <item>Va yaquluna mata haza-l-va\'du in kuntum sodiqin.</item>
+        <item>Ma yanzuruna illa sayhatav-vahidatan ta\'хuzuhum va hum yaхissimun.</item>
+        <item>Fa la yastati\'una tavsiyatav-va la ila ahlihim yarji\'un.</item>
+        <item>Va nufiхo fy-s-suri fa iza hum-mina-l-ajdasi ila Robbihim yansilun.</item>
+        <item>Qolu yo vaylana mam-ba\'asana mim-marqodina, haza ma va\'ada-r-Rohmanu va sadaqo-l-mursalun.</item>
+        <item>In kanat illa sayhatav-vahidatan fa iza hum jami\'ul-ladayna muhzarun.</item>
+        <item>Fa-l-yavma la tug`lamu nafsun shay\'av-va la tujzavna illa ma kuntum ta\'malun.</item>
+        <item>Inna ashaba-l-jannati-l-yavma fӣ shug`ulin fakihun.</item>
+        <item>Hum va azvajuhum fi zilalin \'ala-l-aroiki muttaki\'un.</item>
+        <item>Lahum fiha fakihatuv-va lahum-ma yadda\'un.</item>
+        <item>Salamun qovlam-mir-Robbi-r-Rohim.</item>
+        <item>Va-mtazu-l-yavma ayyuha-l-mujrimun.</item>
+        <item>A lam a\'had ilaykum ya banӣ Adama al-la ta\'budu-sh-Shayton, innahu lakum \' aduvvum-mubin.</item>
+        <item>Va ani\'buduni, haza sirotum-mustaqim.</item>
+        <item>Va laqod azalla minkum jibillan kasiro, a fa lam takunu ta\'qilun.</item>
+        <item>Hazihi jahannamu-l-lati kuntum tu\'adun.</item>
+        <item>Islavha-l-yavma bima kuntum takfurun.</item>
+        <item>Al-yavma naхtimu \'ala afvahihim va tukallimuna aydihim va tashhadu arjuluhum bi ma kanu yaksibun.</item>
+        <item>Va lav nasha\'u latamasna \'ala a\'yunihim fa-stabaqu-s-sirota fa anna yubsirun.</item>
+        <item>Va lav nasha\'u lamasaхnahum \'ala makanatihim fa ma-stato\'u muziyyav-va la yarji\'un.</item>
+        <item>Va man-nu\'ammirhu nunakkishu fӣ-l-хolqi, afala ya\'qilun.</item>
+        <item>Va ma \'allamnahu-sh-shi\'ro va ma yambag`ӣ lah, in huva illa zikruv-va Qur\'anum-mubin.</item>
+        <item>Liyunziro man kana hayyav-va yahiqqo-l-qovlu \'ala-l-kafirin.</item>
+        <item>A va lam yarov anna хolaqna lahum-mim-ma \'amilat aydina an\'aman fahum laha malikun.</item>
+        <item>Va zallalnaha lahum fa minha rokubuhum va minha ya\'kulun.</item>
+        <item>Va lahum fiha manafi\'u va masharibi, a fa la yashkurun.</item>
+        <item>Va-t-taхozu min dunillahi alihatal-la\'allahum yunsarun.</item>
+        <item>La yastati\'una nasrohum va hum lahum jundum-muhzarun.</item>
+        <item>Fa la yahzunka qovluhum, inna na\'lamu ma yusirruna va ma yu\'linun.</item>
+        <item>Avalam yaro-l-insanu anna хolaqnohu min-nutfatin fa iza huva хosimum-mubin.</item>
+        <item>Va zaroba lana masalav-va nasiya хolqohu, qola may-yuhyil-\'izoma va hiya romim.</item>
+        <item>Qul yuhyihal-Lazy ansha\'aha avvala marroh, va Huva bikulli хolqin \'alim.</item>
+        <item>Al-Lazӣ ja\'ala lakum-mina-sh-shajari-l-aхzari naron fa iza antum-minhu tuqidun.</item>
+        <item>A va laysa-l-Lazӣ хolaqo-s-samavati va-l-arza bi qodirin \'ala ay-yaхluqo mislahum, bala va huva-l-хollaqul-\'alim.</item>
+        <item>Innamo amruhu iza aroda shay\'an ay-yaqula lahu kun fayakun.</item>
+        <item>Fa Subhonal-Lazi bi yadihi malakutu kulli shay\'iv-va ilayhi turja\'un.</item>
     </string-array>
 
 </resources>

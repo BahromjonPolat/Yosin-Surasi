@@ -42,6 +42,7 @@
                 android:textStyle="italic"
                 android:text="@string/tr_27" />
 
+
             <TextView
                 android:id="@+id/item_surah_meaning_tv"
                 android:layout_width="match_parent"

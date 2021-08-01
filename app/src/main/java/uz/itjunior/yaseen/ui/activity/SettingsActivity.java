@@ -20,10 +20,9 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
 
 import uz.itjunior.yaseen.R;
-import uz.itjunior.yaseen.model.LanguageManager;
+import uz.itjunior.yaseen.manager.LanguageManager;
 
 public class SettingsActivity extends AppCompatActivity
         implements View.OnClickListener,
@@ -90,6 +89,17 @@ public class SettingsActivity extends AppCompatActivity
         tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 18));
         tvTranscription.setTextSize(preferences.getInt("TrTextSize", 18));
 
+        if (preferences.getBoolean("isArabicChecked", true))
+            tvArabic.setVisibility(View.VISIBLE);
+        else tvArabic.setVisibility(View.GONE);
+
+        if (preferences.getBoolean("isMeaningChecked", true))
+            tvMeaning.setVisibility(View.VISIBLE);
+        else tvMeaning.setVisibility(View.GONE);
+
+        if (preferences.getBoolean("isTrChecked", true))
+            tvTranscription.setVisibility(View.VISIBLE);
+        else tvTranscription.setVisibility(View.GONE);
     }
 
     public void showSettings(View v) {
@@ -141,6 +151,7 @@ public class SettingsActivity extends AppCompatActivity
         sbMeaning.setProgress(meaningTextSize);
     }
 
+
     private void setTextSize(SeekBar seekBar, TextView t, String key) {
         t.setTextSize(seekBar.getProgress());
         editor.putInt(key, seekBar.getProgress());
@@ -175,18 +186,30 @@ public class SettingsActivity extends AppCompatActivity
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.settings_arabic_chb:
+
+                if (chbArabic.isChecked()) tvArabic.setVisibility(View.VISIBLE);
+                else tvArabic.setVisibility(View.GONE);
+
                 sbArabic.setEnabled(chbArabic.isChecked());
                 editor.putBoolean("isArabicChecked", chbArabic.isChecked());
                 editor.apply();
                 break;
 
             case R.id.settings_meaning_text_chb:
+
+                if (chbMeaning.isChecked()) tvMeaning.setVisibility(View.VISIBLE);
+                else tvMeaning.setVisibility(View.GONE);
+
                 sbMeaning.setEnabled(chbMeaning.isChecked());
                 editor.putBoolean("isMeaningChecked", chbMeaning.isChecked());
                 editor.apply();
                 break;
 
             case R.id.settings_transcription_text_chb:
+
+                if (chbTranscription.isChecked()) tvTranscription.setVisibility(View.VISIBLE);
+                else tvTranscription.setVisibility(View.GONE);
+
                 sbTranscription.setEnabled(chbTranscription.isChecked());
                 editor.putBoolean("isTrChecked", chbTranscription.isChecked());
                 editor.apply();

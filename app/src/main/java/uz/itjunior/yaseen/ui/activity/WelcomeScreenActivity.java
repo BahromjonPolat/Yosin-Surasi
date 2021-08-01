@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -18,20 +19,18 @@ import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.util.Locale;
-
 import uz.itjunior.yaseen.R;
-import uz.itjunior.yaseen.model.LanguageManager;
+import uz.itjunior.yaseen.manager.LanguageManager;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
+    private static final String TAG = "WelcomeScreenActivity";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    private LanguageManager manager;
+    public LanguageManager manager;
     private AlertDialog.Builder builder;
 
     private TextView tvLatin, tvCyrillic;
-
     private FirebaseAnalytics analytics;
 
     @SuppressLint("CommitPrefEdits")
@@ -54,12 +53,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (lng != null) {
+                    Log.d(TAG, "run: method was worked");
                     manager.getDefaultLanguage();
                     goToMain();
                 }
                 else setLanguage();
             }
         }, 500);
+
+        Log.d(TAG, "onCreate: bottom of Handler");
     }
 
     private void goToMain() {

@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +21,8 @@ import java.util.List;
 
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.model.Surah;
-import uz.itjunior.yaseen.service.PlayerService;
+
+import static uz.itjunior.yaseen.ui.activity.MainActivity.player;
 
 public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder> {
 
@@ -37,7 +37,6 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         this.context = context;
         this.surahList = surahList;
         preferences = context.getSharedPreferences("Requests", Context.MODE_PRIVATE);
-        editor = preferences.edit();
     }
 
     @NonNull
@@ -55,14 +54,34 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
         Surah surah = surahList.get(position);
         holder.tvVerse.setText(String.valueOf(position));
-        holder.tvArabic.setText(surah.getArabic());
-        holder.tvTranscription.setText(surah.getTranscription());
-        holder.tvMeaning.setText(surah.getMeaning());
+
+        if (preferences.getBoolean("isArabicChecked", true)) {
+            holder.tvArabic.setVisibility(View.VISIBLE);
+            holder.tvArabic.setText(surah.getArabic());
+        } else {
+            holder.tvArabic.setVisibility(View.GONE);
+        }
+
+        if (preferences.getBoolean("isMeaningChecked", true)) {
+            holder.tvMeaning.setVisibility(View.VISIBLE);
+            holder.tvMeaning.setText(surah.getMeaning());
+        } else {
+            holder.tvMeaning.setVisibility(View.GONE);
+        }
+
+        if (preferences.getBoolean("isTrChecked", true)) {
+            holder.tvTranscription.setVisibility(View.VISIBLE);
+            holder.tvTranscription.setText(surah.getTranscription());
+        } else {
+            holder.tvTranscription.setVisibility(View.GONE);
+        }
 
         holder.imgCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copyToClipboard(surah.getArabic(), surah.getMeaning(), position);
+                ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("text", getFormattedAyat(position));
+                manager.setPrimaryClip(clipData);
             }
         });
 
@@ -70,32 +89,43 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, context.getResources().getString(R.string.app_name));
+                intent.putExtra(Intent.EXTRA_TEXT, getFormattedAyat(position));
+                context.startActivity(Intent.createChooser(intent, "Ulashing"));
+
             }
         });
 
         holder.imgPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putInt("playingAudio", surah.getAudio());
-                editor.apply();
-                Intent intent = new Intent(context, PlayerService.class);
-                intent.putExtra("resId", surah.getAudio());
-                context.startService(intent);
+
+                if (player != null) {
+                    player.stop();
+                    player.release();
+                    player = MediaPlayer.create(context, surah.getAudio());
+                    player.start();
+                    Log.d(TAG, "onClick: " + surah.getAudio());
+                }
+
+                player = MediaPlayer.create(context, surah.getAudio());
+                player.start();
+
             }
         });
 
     }
 
-    private void copyToClipboard(String arabic, String meaning, int verse) {
-        @SuppressLint("DefaultLocale") String clip =
-                String.format("%s\n\n%s\n\n(Yosin surasi%d-oyat)", arabic, meaning, verse);
-
-        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clipData = ClipData.newPlainText("text", clip);
-        manager.setPrimaryClip(clipData);
-
-        Log.d(TAG, "copyToClipboard: method was worked");
-        Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
+    private String getFormattedAyat(int verse) {
+        @SuppressLint("DefaultLocale") String formattedAyat = String.format("%s\n\n%s\n\n(%s, %d-%s)",
+                        surahList.get(verse).getArabic(),
+                        surahList.get(verse).getMeaning(),
+                        context.getResources().getString(R.string.app_name)
+                        , verse,
+                        context.getResources().getString(R.string.ayat));
+        return formattedAyat;
     }
 
 
@@ -125,7 +155,6 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             imgCopy = itemView.findViewById(R.id.item_surah_copy_img);
             imgPlay = itemView.findViewById(R.id.item_surah_play_img);
             imgShare = itemView.findViewById(R.id.item_surah_share_img);
-
         }
     }
 }

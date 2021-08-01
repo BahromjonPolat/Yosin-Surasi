@@ -11,25 +11,22 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import me.zhanghai.android.fastscroll.FastScrollerBuilder;
 import me.zhanghai.android.fastscroll.PopupTextProvider;
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.adapter.SurahAdapter;
+import uz.itjunior.yaseen.manager.LanguageManager;
 import uz.itjunior.yaseen.model.Surah;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
 
     private DatabaseReference reference;
+    public static MediaPlayer player;
 
     // TODO: 7/24/21 LanguageManager'dan foydalanib tilni sozlash!
 
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
-
 
     }
 
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         rv.scrollToPosition(preferences.getInt("lastPosition", 0));
 
         FastScrollerBuilder scrollerBuilder = new FastScrollerBuilder(rv);
-        scrollerBuilder.disableScrollbarAutoHide();
         scrollerBuilder.setPopupTextProvider(new PopupTextProvider() {
             @NonNull
             @Override
@@ -89,20 +85,28 @@ public class MainActivity extends AppCompatActivity {
 
         String[] ayatList = getResources().getStringArray(R.array.ayat_list);
         String[] trCyrillic = getResources().getStringArray(R.array.transcription_cyrillic);
+        String[] trLatin = getResources().getStringArray(R.array.transcription_latin);
         String[] meanings_cyrillic = getResources().getStringArray(R.array.meaning_cyrillic);
         String[] meanings_latin = getResources().getStringArray(R.array.meaning_latin);
         String[] meaning;
+        String[] transcription;
 
 
         String lng = preferences.getString("language", "uz");
 
-        if (lng.equals("uz")) meaning = meanings_cyrillic;
-        else meaning = meanings_latin;
+        if (lng.equals("uz")) {
+            meaning = meanings_cyrillic;
+            transcription = trCyrillic;
+        }
+        else {
+            meaning = meanings_latin;
+            transcription = trLatin;
+        }
 
         int i = 0;
         for (String s : ayatList) {
             int resId = getResources().getIdentifier(fields[i].getName(), "raw", getPackageName());
-            surahList.add(new Surah(i, s, trCyrillic[i], meaning[i], resId));
+            surahList.add(new Surah(i, s, transcription[i], meaning[i], resId));
             i++;
         }
         return surahList;
@@ -119,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+
+            case R.id.option_menu_tajvid:
+                startActivity(new Intent(MainActivity.this, TajweedActivity.class));
+                break;
 
             case R.id.option_menu_about_surah:
                 startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));

@@ -1,4 +1,4 @@
-package uz.itjunior.yaseen.model;
+package uz.itjunior.yaseen.manager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
