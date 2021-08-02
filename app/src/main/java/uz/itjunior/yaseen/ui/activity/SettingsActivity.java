@@ -245,4 +245,5 @@ public class SettingsActivity extends AppCompatActivity
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
+
 }
