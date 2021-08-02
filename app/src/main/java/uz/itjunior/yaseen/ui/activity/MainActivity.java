@@ -14,10 +14,14 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     public static MediaPlayer player;
 
+    private ImageView imgMenu;
+
     // TODO: 7/24/21 LanguageManager'dan foydalanib tilni sozlash!
 
     @SuppressLint({"CommitPrefEdits", "SetTextI18n"})
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences("Requests", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
+        imgMenu = findViewById(R.id.main_menu_img);
 
     }
 
@@ -129,11 +136,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-        @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        return true;
+    public void showMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, imgMenu);
+        popupMenu.inflate(R.menu.option_menu);
+        popupMenu.show();
+        popupMenu.setOnMenuItemClickListener(this::onOptionsItemSelected);
     }
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -160,4 +169,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

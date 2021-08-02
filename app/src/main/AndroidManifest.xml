@@ -13,12 +13,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YaSeen">
-        <activity android:name=".ui.activity.TajweedActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.InfoActivity" />
-        <activity android:name=".ui.activity.SettingsActivity" />
-        <activity android:name=".ui.activity.AboutSurahActivity" />
-        <activity android:name=".ui.activity.WelcomeScreenActivity">
+        <activity android:name=".ui.activity.TajweedActivity"
+            android:configChanges="screenSize|orientation"/>
+
+        <activity android:name=".ui.activity.MainActivity"
+            android:configChanges="orientation|screenSize"/>
+
+        <activity android:name=".ui.activity.InfoActivity"
+            android:configChanges="orientation|screenSize"/>
+
+        <activity android:name=".ui.activity.SettingsActivity"
+            android:configChanges="screenSize|orientation"/>
+
+        <activity android:name=".ui.activity.AboutSurahActivity"
+            android:configChanges="orientation|screenSize"/>
+
+        <activity android:name=".ui.activity.WelcomeScreenActivity"
+            android:configChanges="screenSize|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
