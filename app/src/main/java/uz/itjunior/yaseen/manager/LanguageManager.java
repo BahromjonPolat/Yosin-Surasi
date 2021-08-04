@@ -12,6 +12,8 @@ import android.util.Log;
 
 import java.util.Locale;
 
+import uz.itjunior.yaseen.ui.activity.MainActivity;
+
 public class LanguageManager {
 
     private static final String TAG = "LanguageManager";
@@ -55,7 +57,9 @@ public class LanguageManager {
 
         editor.putString("language", lng);
         editor.apply();
-        activity.startActivity(new Intent(activity, activity.getClass()));
+        Intent intent = new Intent(activity, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(new Intent(intent));
         activity.finish();
     }
 

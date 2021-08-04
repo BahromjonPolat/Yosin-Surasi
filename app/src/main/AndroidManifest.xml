@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YaSeen">
+
         <activity android:name=".ui.activity.TajweedActivity"
             android:configChanges="screenSize|orientation"/>
 
-        <activity android:name=".ui.activity.MainActivity"
-            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".ui.activity.MainActivity"/>
 
         <activity android:name=".ui.activity.InfoActivity"
             android:configChanges="orientation|screenSize"/>

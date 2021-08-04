@@ -15,6 +15,7 @@ import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,14 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imgMenu;
 
-    // TODO: 7/24/21 LanguageManager'dan foydalanib tilni sozlash!
-
     @SuppressLint({"CommitPrefEdits", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         hideStatusBar();
         setContentView(R.layout.activity_main);
 
@@ -64,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
         editor = preferences.edit();
 
         imgMenu = findViewById(R.id.main_menu_img);
-
     }
-
 
     @Override
     protected void onStart() {
@@ -134,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        setDefaultLanguage();
+
+        Log.d(TAG, "hideStatusBar: method was worked!");
+    }
+
+    private void setDefaultLanguage(){
+        LanguageManager manager = new LanguageManager(this);
+        manager.getDefaultLanguage();
     }
 
     public void showMenu(View view) {
@@ -169,6 +174,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

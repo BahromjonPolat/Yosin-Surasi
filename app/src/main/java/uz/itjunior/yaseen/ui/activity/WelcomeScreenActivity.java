@@ -27,7 +27,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    public LanguageManager manager;
+    private LanguageManager manager;
     private AlertDialog.Builder builder;
 
     private TextView tvLatin, tvCyrillic;
