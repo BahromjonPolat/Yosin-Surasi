@@ -105,14 +105,10 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
                 if (player != null) {
                     player.stop();
                     player.release();
-                    player = MediaPlayer.create(context, surah.getAudio());
-                    player.start();
                     Log.d(TAG, "onClick: " + surah.getAudio());
                 }
-
                 player = MediaPlayer.create(context, surah.getAudio());
                 player.start();
-
             }
         });
 
