@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import uz.itjunior.yaseen.R;
 import uz.itjunior.yaseen.model.Surah;
@@ -33,10 +38,15 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
     private final Context context;
     private final List<Surah> surahList;
 
+    private FirebaseAnalytics analytics;
+    private Bundle bundle;
+
     public SurahAdapter(Context context, List<Surah> surahList) {
         this.context = context;
         this.surahList = surahList;
         preferences = context.getSharedPreferences("Requests", Context.MODE_PRIVATE);
+        analytics = FirebaseAnalytics.getInstance(context);
+        bundle = new Bundle();
     }
 
     @NonNull
@@ -46,18 +56,24 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         return new SurahHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SurahAdapter.SurahHolder holder, int position) {
         holder.tvArabic.setTextSize(preferences.getInt("ArabicTextSize", 22));
         holder.tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 15));
         holder.tvTranscription.setTextSize(preferences.getInt("TrTextSize", 15));
 
+        NumberFormat nf = NumberFormat.getInstance(Locale.forLanguageTag("AR"));
+        String ayah = "\uFD3F" + nf.format(position) + "\uFD3E";
+
         Surah surah = surahList.get(position);
         holder.tvVerse.setText(String.valueOf(position));
+        holder.tvVerseArabic.setText(nf.format(position));
+
 
         if (preferences.getBoolean("isArabicChecked", true)) {
             holder.tvArabic.setVisibility(View.VISIBLE);
-            holder.tvArabic.setText(surah.getArabic());
+            holder.tvArabic.setText(surah.getArabic() + ayah + " ");
         } else {
             holder.tvArabic.setVisibility(View.GONE);
         }
@@ -109,6 +125,10 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
                 }
                 player = MediaPlayer.create(context, surah.getAudio());
                 player.start();
+
+                bundle.putString("oyat", surah.getAudio() + "-oyat");
+                analytics.logEvent("play_audio", bundle);
+
             }
         });
 
@@ -137,6 +157,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
         private final TextView tvTranscription;
         private final TextView tvMeaning;
         private final TextView tvVerse;
+        private final TextView tvVerseArabic;
         private final ImageView imgPlay;
         private final ImageView imgCopy;
         private final ImageView imgShare;
@@ -148,6 +169,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
             tvMeaning = itemView.findViewById(R.id.item_surah_meaning_tv);
             tvTranscription = itemView.findViewById(R.id.item_surah_transcription_tv);
             tvVerse = itemView.findViewById(R.id.item_surah_verse_tv);
+            tvVerseArabic = itemView.findViewById(R.id.item_surah_verse_arabic_tv);
             imgCopy = itemView.findViewById(R.id.item_surah_copy_img);
             imgPlay = itemView.findViewById(R.id.item_surah_play_img);
             imgShare = itemView.findViewById(R.id.item_surah_share_img);

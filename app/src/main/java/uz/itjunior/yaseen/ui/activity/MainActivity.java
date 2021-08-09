@@ -170,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.option_menu_settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
+
+            case R.id.option_menu_reading_mode:
+                startActivity(new Intent(MainActivity.this, ReadingModeActivity.class));
+                break;
         }
 
         return super.onOptionsItemSelected(item);
