@@ -3,6 +3,7 @@ package uz.itjunior.yaseen.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -17,6 +18,7 @@ public class ReadingModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_reading_mode);
 
         tvReading = findViewById(R.id.reading_surah_tv);
