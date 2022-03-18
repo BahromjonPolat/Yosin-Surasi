@@ -155,17 +155,17 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.option_menu_tajvid:
-                startActivity(new Intent(MainActivity.this, TajweedActivity.class));
-                break;
+//            case R.id.option_menu_tajvid:
+//                startActivity(new Intent(MainActivity.this, TajweedActivity.class));
+//                break;
 
             case R.id.option_menu_about_surah:
                 startActivity(new Intent(MainActivity.this, AboutSurahActivity.class));
                 break;
 
-            case R.id.option_menu_info:
-                startActivity(new Intent(MainActivity.this, InfoActivity.class));
-                break;
+//            case R.id.option_menu_info:
+//                startActivity(new Intent(MainActivity.this, InfoActivity.class));
+//                break;
 
             case R.id.option_menu_settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));

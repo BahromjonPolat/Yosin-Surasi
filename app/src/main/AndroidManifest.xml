@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YaSeen">
-        <activity android:name=".ui.activity.MemorizeActivity"></activity>
+        <activity android:name=".ui.activity.MemorizeActivity" />
         <activity android:name=".ui.activity.ReadingModeActivity" />
         <activity
             android:name=".ui.activity.TajweedActivity"
@@ -30,7 +30,8 @@
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".ui.activity.WelcomeScreenActivity"
-            android:configChanges="screenSize|orientation">
+            android:configChanges="screenSize|orientation"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

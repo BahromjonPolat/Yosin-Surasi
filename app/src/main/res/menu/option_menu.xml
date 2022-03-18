@@ -4,9 +4,9 @@
     <item android:id="@+id/option_menu_reading_mode"
         android:title="@string/oqish_rejimi"/>
 
-    <item
-        android:id="@+id/option_menu_tajvid"
-        android:title="@string/tajvid_qoidalari" />
+<!--    <item-->
+<!--        android:id="@+id/option_menu_tajvid"-->
+<!--        android:title="@string/tajvid_qoidalari" />-->
 
     <item
         android:id="@+id/option_menu_about_surah"
@@ -16,8 +16,8 @@
         android:id="@+id/option_menu_settings"
         android:title="@string/settings" />
 
-    <item
-        android:id="@+id/option_menu_info"
-        android:title="@string/about" />
+<!--    <item-->
+<!--        android:id="@+id/option_menu_info"-->
+<!--        android:title="@string/about" />-->
 
 </menu>

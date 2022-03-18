@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,14 +33,14 @@ import static uz.itjunior.yaseen.ui.activity.MainActivity.player;
 public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder> {
 
     private static final String TAG = "SurahAdapter";
-    private SharedPreferences preferences;
+    private final SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
     private final Context context;
     private final List<Surah> surahList;
 
-    private FirebaseAnalytics analytics;
-    private Bundle bundle;
+    private final FirebaseAnalytics analytics;
+    private final Bundle bundle;
 
     public SurahAdapter(Context context, List<Surah> surahList) {
         this.context = context;
@@ -58,7 +59,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull SurahAdapter.SurahHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SurahAdapter.SurahHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvArabic.setTextSize(preferences.getInt("ArabicTextSize", 22));
         holder.tvMeaning.setTextSize(preferences.getInt("MeaningTextSize", 15));
         holder.tvTranscription.setTextSize(preferences.getInt("TrTextSize", 15));
@@ -98,6 +99,8 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahHolder>
                 ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clipData = ClipData.newPlainText("text", getFormattedAyat(position));
                 manager.setPrimaryClip(clipData);
+                Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
+
             }
         });
 
